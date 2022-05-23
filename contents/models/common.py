@@ -14,7 +14,7 @@ class ContentCommonModel(models.Model):
     title = models.CharField(max_length=150)
     descriptions = models.TextField()
     release_year = models.CharField(max_length=5, help_text='Enter Release Year')
-    runtime = models.CharField(max_length=15, help_text='Runtime must be in minutes')
+    runtime = models.CharField(max_length=15, help_text='Runtime must be in minutes',blank=True,null=True)
     video_quality = models.CharField(max_length=8, choices=VID_QUALITY, default=FULL_HD)
     audience_age = models.PositiveIntegerField(default=13)
 

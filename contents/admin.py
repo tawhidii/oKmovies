@@ -3,11 +3,11 @@ from contents.models import content
 from contents.models import genre
 from contents.models import country
 from contents.models import category
-from contents.models import episode
+from contents.models import season_episode
 
 
 @admin.register(content.Content)
-class MovieAdmin(admin.ModelAdmin):
+class ContentAdmin(admin.ModelAdmin):
     """Movie admin class definition"""
     pass
 
@@ -30,3 +30,19 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 
+@admin.register(season_episode.Season)
+class SeasonAdmin(admin.ModelAdmin):
+    """Season Admin admin Definition """
+    pass
+
+
+@admin.register(season_episode.Episode)
+class EpisodeAdmin(admin.ModelAdmin):
+    """Episode admin class definition  """
+    pass
+
+
+@admin.register(content.TvSeries)
+class TvSeriesAdmin(admin.ModelAdmin):
+    """Tv Series admin class definition """
+    pass
