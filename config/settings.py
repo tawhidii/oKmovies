@@ -40,8 +40,9 @@ DJANGO_APPS = [
 ]
 
 CUSTOM_APPS = [
+    'admin_dashboard.apps.AdminDashboardConfig',
     'core.apps.CoreConfig',
-    'contents.apps.ContentsConfig'
+    'contents.apps.ContentsConfig',
 ]
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS
 
@@ -129,7 +130,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

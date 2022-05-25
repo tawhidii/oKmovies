@@ -26,9 +26,7 @@ class TvSeries(ContentCommonModel, TimeStampedModel):
     country = models.ManyToManyField(Country, related_name='tvseries')
 
     class Meta:
-        verbose_name_plural =' Tv Series'
+        verbose_name_plural = ' Tv Series'
 
     def __str__(self):
         return self.title
-
-
