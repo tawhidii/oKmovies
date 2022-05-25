@@ -1,5 +1,7 @@
 from django.urls import path
-from django.views.generic import TemplateView
+from .views import AdminIndex
+
+app_name = 'admin_dashboard'
 urlpatterns = [
-    path('',TemplateView.as_view(template_name='admin_base.html'))
+    path('', AdminIndex.as_view(), name='admin-index')
 ]

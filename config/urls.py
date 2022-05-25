@@ -18,5 +18,5 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('admin-dash/',include('admin_dashboard.urls'))
+    path('admin-dash/',include('admin_dashboard.urls',namespace='admin_dashboard'))
 ]
