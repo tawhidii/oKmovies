@@ -1,0 +1,109 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+    <!-- main content -->
+<main class="main">
+	<div class="container-fluid">
+		<div class="row">
+			<!-- main title -->
+			<div class="col-12">
+				<div class="main__title">
+					<h2>Add new item</h2>
+				</div>
+			</div>
+			<!-- end main title -->
+
+			<!-- form -->
+			<div class="col-12">
+				<form action="#" class="form" method="post">
+                    {% csrf_token %}
+					<div class="row">
+						<div class="col-12 col-md-5 form__cover">
+							<div class="row">
+								<div class="col-12 col-sm-6 col-md-12">
+									<div class="form__img">
+										<label for="form__img-upload">Upload cover (270 x 400)</label>
+										<input id="form__img-upload" name="form__img-upload" type="file" accept=".png, .jpg, .jpeg">
+										<img id="form__img" src="#" alt=" ">
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-md-7 form__content">
+							<div class="row">
+								<div class="col-12">
+									<input type="text" class="form__input" placeholder="Title" name="title">
+								</div>
+
+								<div class="col-12">
+									<textarea id="text" name="description" class="form__textarea" placeholder="Description"></textarea>
+								</div>
+
+								<div class="col-12 col-sm-6 col-lg-3">
+									<input type="text" class="form__input" placeholder="Release year" name="release_year">
+								</div>
+
+								<div class="col-12 col-sm-6 col-lg-3">
+									<input type="text" class="form__input" placeholder="Running timed in minutes" name="runtime">
+								</div>
+
+								<div class="col-12 col-sm-6 col-lg-3">
+									<select class="js-example-basic-single" id="quality" name="video_quality">
+										<option value=""></option>
+										<option value="full_hd">FullHD</option>
+										<option value="hd">HD</option>
+                                        <option value="sd">SD</option>
+									</select>
+								</div>
+
+								<div class="col-12 col-sm-6 col-lg-3">
+									<input type="text" class="form__input" placeholder="Age" name="audience_age">
+								</div>
+
+								<div class="col-12 col-lg-6">
+									<select class="js-example-basic-multiple" id="country" multiple="multiple" name="country">
+                                        {% for country in countries %}
+                                            <option value="{{ country.id }}">{{ country.name }}</option>
+                                        {% endfor %}
+									</select>
+								</div>
+
+								<div class="col-12 col-lg-6">
+									<select class="js-example-basic-multiple" id="genre" multiple="multiple" name="genre">
+                                        {% for genre in genres %}
+                                            <option value="{{ genre.id }}">{{ genre.name }}</option>
+                                        {% endfor %}
+									</select>
+								</div>
+
+{#								<div class="col-12">#}
+{#									<div class="form__gallery">#}
+{#										<label id="gallery1" for="form__gallery-upload">Upload photos</label>#}
+{#										<input data-name="#gallery1" id="form__gallery-upload" name="gallery" class="form__gallery-upload" type="file" accept=".png, .jpg, .jpeg" multiple>#}
+{#									</div>#}
+{#								</div>#}
+							</div>
+						</div>
+
+						<div class="col-12">
+							<div class="row">
+								<!-- movie -->
+								<div class="col-12">
+                                    <input type="text" class="form__input" placeholder="Movie Media Url" name="video_url">
+								</div>
+								<!-- end movie -->
+
+								<div class="col-12">
+									<button type="submit" class="form__btn">publish</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- end form -->
+		</div>
+	</div>
+</main>
+<!-- end main content -->
+{% endblock %}
