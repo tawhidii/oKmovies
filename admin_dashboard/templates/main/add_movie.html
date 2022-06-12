@@ -14,7 +14,7 @@
 
 			<!-- form -->
 			<div class="col-12">
-				<form action="#" class="form" method="post">
+				<form action="#" class="form" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
 					<div class="row">
 						<div class="col-12 col-md-5 form__cover">
@@ -32,7 +32,7 @@
 						<div class="col-12 col-md-7 form__content">
 							<div class="row">
 								<div class="col-12">
-									<input type="text" class="form__input" placeholder="Title" name="title">
+									<input type="text" class="form__input" placeholder="Title" name="title" id="movie-title">
 								</div>
 
 								<div class="col-12">
@@ -54,12 +54,13 @@
 										<option value="hd">HD</option>
                                         <option value="sd">SD</option>
 									</select>
+
 								</div>
+
 
 								<div class="col-12 col-sm-6 col-lg-3">
-									<input type="text" class="form__input" placeholder="Age" name="audience_age">
+									<input type="text" class="form__input" placeholder="Age" name="audience_age" required>
 								</div>
-
 								<div class="col-12 col-lg-6">
 									<select class="js-example-basic-multiple" id="country" multiple="multiple" name="country">
                                         {% for country in countries %}
@@ -67,7 +68,6 @@
                                         {% endfor %}
 									</select>
 								</div>
-
 								<div class="col-12 col-lg-6">
 									<select class="js-example-basic-multiple" id="genre" multiple="multiple" name="genre">
                                         {% for genre in genres %}
@@ -75,26 +75,27 @@
                                         {% endfor %}
 									</select>
 								</div>
+                                <!--Movie Category -->
+                                <div class="col-12 col-sm-6 col-lg-3">
+                                    <select class="js-example-basic-single" id="category" name="category">
+                                        {% for category in categories %}
+                                                <option value=""></option>
+                                               <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <!-- End movie category !-->
 
-{#								<div class="col-12">#}
-{#									<div class="form__gallery">#}
-{#										<label id="gallery1" for="form__gallery-upload">Upload photos</label>#}
-{#										<input data-name="#gallery1" id="form__gallery-upload" name="gallery" class="form__gallery-upload" type="file" accept=".png, .jpg, .jpeg" multiple>#}
-{#									</div>#}
-{#								</div>#}
 							</div>
 						</div>
 
 						<div class="col-12">
 							<div class="row">
-								<!-- movie -->
 								<div class="col-12">
                                     <input type="text" class="form__input" placeholder="Movie Media Url" name="video_url">
 								</div>
-								<!-- end movie -->
-
 								<div class="col-12">
-									<button type="submit" class="form__btn">publish</button>
+									<button type="submit" class="form__btn" id="button_publish">publish</button>
 								</div>
 							</div>
 						</div>
@@ -105,5 +106,6 @@
 		</div>
 	</div>
 </main>
+
 <!-- end main content -->
 {% endblock %}

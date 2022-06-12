@@ -11,6 +11,7 @@ class ContentCommonModel(models.Model):
         (HD, 'HD'),
         (SD, 'SD'),
     )
+    cover_photo = models.ImageField(upload_to='movies/%Y/%m/%d/')
     title = models.CharField(max_length=150)
     descriptions = models.TextField()
     release_year = models.CharField(max_length=5, help_text='Enter Release Year')

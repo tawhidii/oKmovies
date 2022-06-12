@@ -66,6 +66,10 @@ $(document).ready(function () {
 		allowClear: true
 	});
 
+	$('#category').select2({
+		placeholder: "Choose Category",
+	});
+
 	$('#country').select2({
 		placeholder: "Choose country / countries"
 	});
