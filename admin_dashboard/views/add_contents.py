@@ -1,11 +1,12 @@
+from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
-from django.views.generic import View
+from django.views.generic import View, FormView
 from django.contrib import messages
 from contents.models.country import Country
 from contents.models.genre import Genre
 from contents.models.content import Content, ContentGallery
 from contents.models.category import Category
-
+from admin_dashboard.forms.content_add_form import AddContentForm
 
 class AddContent(View):
 
@@ -53,3 +54,16 @@ class AddContent(View):
         content_object.save()
         messages.success(request, 'Content added successfully !!')
         return redirect('admin_dashboard:add-movie')
+
+
+class AddContentMF(FormView):
+    template_name = 'main/add_movie_model.html'
+    form_class = AddContentForm
+    success_url = reverse_lazy('admin_dashboard:add-content-mf')
+
+    def form_valid(self, form):
+        form.save()
+        for photo in self.request.FILES.getlist('gallery'):
+            ContentGallery.objects.create(content=form.instance, content_image=photo)
+        messages.success(self.request, 'Content Added !!')
+        return super().form_valid(form)
