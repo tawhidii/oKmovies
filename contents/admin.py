@@ -46,3 +46,9 @@ class EpisodeAdmin(admin.ModelAdmin):
 class TvSeriesAdmin(admin.ModelAdmin):
     """Tv Series admin class definition """
     pass
+
+
+@admin.register(content.ContentGallery)
+class ContentGalleryAdmin(admin.ModelAdmin):
+    """ Content Gallery admin class definition"""
+    pass

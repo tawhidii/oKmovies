@@ -20,6 +20,18 @@ class Content(ContentCommonModel, TimeStampedModel):
         return self.title
 
 
+class ContentGallery(models.Model):
+    content = models.ForeignKey(Content, on_delete=models.CASCADE)
+    content_image = models.ImageField(upload_to='movies/%Y/%m/%d/')
+
+    class Meta:
+        verbose_name = 'Content Gallery'
+        verbose_name_plural = 'Content Gallery'
+
+    def __str__(self):
+        return self.content_image.url
+
+
 class TvSeries(ContentCommonModel, TimeStampedModel):
     """TV Series Model definition """
     genre = models.ManyToManyField(Genre, related_name='tvseries')
@@ -30,6 +42,3 @@ class TvSeries(ContentCommonModel, TimeStampedModel):
 
     def __str__(self):
         return self.title
-
-
-

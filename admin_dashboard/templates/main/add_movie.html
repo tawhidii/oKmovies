@@ -14,6 +14,7 @@
 
 			<!-- form -->
 			<div class="col-12">
+                {% include 'message.html' %}
 				<form action="#" class="form" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
 					<div class="row">
@@ -75,20 +76,24 @@
                                         {% endfor %}
 									</select>
 								</div>
-                                <!--Movie Category -->
-                                <div class="col-12 col-sm-6 col-lg-3">
-                                    <select class="js-example-basic-single" id="category" name="category">
-                                        {% for category in categories %}
-                                                <option value=""></option>
-                                               <option value="{{ category.id }}">{{ category.name }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                                <!-- End movie category !-->
-
 							</div>
 						</div>
-
+                        <div class="col-12">
+                                <div class="form__gallery">
+                                    <label id="gallery1" for="form__gallery-upload">Upload photos</label>
+                                    <input data-name="#gallery1" id="form__gallery-upload" name="gallery" class="form__gallery-upload" type="file" accept=".png, .jpg, .jpeg" multiple>
+                                </div>
+                        </div>
+                        <!--Movie Category -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <select class="js-example-basic-single" id="category" name="category">
+                                {% for category in categories %}
+                                        <option value=""></option>
+                                       <option value="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <!-- End movie category !-->
 						<div class="col-12">
 							<div class="row">
 								<div class="col-12">
