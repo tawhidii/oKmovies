@@ -1,16 +1,16 @@
 from django import forms
 from django.forms import ModelForm
-from contents.models.content import Content
+from contents.models.content import TvSeries
 from contents.models.country import Country
 from contents.models.genre import Genre
-from contents.models.category import Category
 
 
-class AddContentForm(ModelForm):
+
+class AddTvSeriesForm(ModelForm):
     """Content add form class definition """
 
     class Meta:
-        model = Content
+        model = TvSeries
         fields = '__all__'
 
     FULL_HD = 'full_hd'
@@ -26,9 +26,9 @@ class AddContentForm(ModelForm):
                                                                  'id': 'form__img-upload'}))
     title = forms.CharField(widget=forms.TextInput(attrs={'class': 'form__input',
                                                           'id': 'movie-title',
-                                                          'placeholder': 'Content Title'}))
+                                                          'placeholder': 'Name of the new series'}))
     descriptions = forms.CharField(widget=forms.Textarea(attrs={'class': 'form__textarea', 'placeholder': 'Enter '
-                                                                                                          'content '
+                                                                                                          'series '
                                                                                                           'description'}))
     release_year = forms.CharField(widget=forms.TextInput(attrs={'class': 'form__input', 'placeholder': 'Release '
                                                                                                         'year'}))
@@ -45,29 +45,3 @@ class AddContentForm(ModelForm):
                                            widget=forms.SelectMultiple(
                                                attrs={'class': 'js-example-basic-multiple',
                                                       'id': 'genre', 'multiple': 'multiple'}))
-    category = forms.ModelChoiceField(queryset=Category.objects.all(),
-                                      widget=forms.Select(
-                                          attrs={'class': 'js-example-basic-simple', 'id': 'category'}))
-    video_url = forms.URLField(widget=forms.URLInput(attrs={'class': 'form__input'}))
-
-    def save(self, *args, **kwargs):
-        content = super().save(commit=False)
-        content.cover_photo = self.cleaned_data.get('cover_photo')
-        content.title = self.cleaned_data.get('title')
-        content.descriptions = self.cleaned_data.get('descriptions')
-        content.release_year = self.cleaned_data.get('release_year')
-        content.runtime = self.cleaned_data.get('runtime')
-        content.video_quality = self.cleaned_data.get('video_quality')
-        content.audience_age = self.cleaned_data.get('audience_age')
-        content.category_id = self.cleaned_data.get('category').id
-        content.video_url = self.cleaned_data.get('video_url')
-        content.save()
-        countries = [int(c.id) for c in self.cleaned_data.get('country')]
-        genres = [int(g.id) for g in self.cleaned_data.get('genre')]
-        content.country.set(countries)
-        content.genre.set(genres)
-
-        return content
-
-
-

@@ -1,10 +1,15 @@
 from django.urls import path
 from admin_dashboard.views.admin_index import AdminIndex
 from admin_dashboard.views.add_contents import AddContent, AddContentMF
+from admin_dashboard.views.add_tv_series import TvSeriesAddView
 
 app_name = 'admin_dashboard'
 urlpatterns = [
     path('', AdminIndex.as_view(), name='admin-index'),
-    path('add-movie/', AddContent.as_view(), name='add-content'),
-    path('add-movie-mf/', AddContentMF.as_view(), name='add-content-mf')
+    # content
+    path('add-content/', AddContent.as_view(), name='add-content'),
+    path('add-content-mf/', AddContentMF.as_view(), name='add-content-mf'),
+    # tv-series
+    path('add-series/',TvSeriesAddView.as_view(),name='add-series')
+
 ]

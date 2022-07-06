@@ -8,10 +8,11 @@ from contents.models.content import Content, ContentGallery
 from contents.models.category import Category
 from admin_dashboard.forms.content_add_form import AddContentForm
 
+
 class AddContent(View):
 
     def get(self, request):
-        template_name = 'main/add_movie.html'
+        template_name = 'main/content/add_movie.html'
         countries = Country.objects.all()
         genres = Genre.objects.all()
         categories = Category.objects.all()
@@ -53,11 +54,11 @@ class AddContent(View):
         content_object.country.set(country_list)
         content_object.save()
         messages.success(request, 'Content added successfully !!')
-        return redirect('admin_dashboard:add-movie')
+        return redirect('admin_dashboard:add-content')
 
 
 class AddContentMF(FormView):
-    template_name = 'main/add_movie_model.html'
+    template_name = 'main/content/add_movie_model.html'
     form_class = AddContentForm
     success_url = reverse_lazy('admin_dashboard:add-content-mf')
 

@@ -12,6 +12,12 @@ class ContentAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(content.ContentGallery)
+class ContentGalleryAdmin(admin.ModelAdmin):
+    """ Content Gallery admin class definition"""
+    pass
+
+
 @admin.register(genre.Genre)
 class GenreAdmin(admin.ModelAdmin):
     """Genre admin class definition"""
@@ -32,7 +38,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(season_episode.Season)
 class SeasonAdmin(admin.ModelAdmin):
-    """Season Admin admin Definition """
+    """SeasonAdmin admin Definition """
     pass
 
 
@@ -48,7 +54,7 @@ class TvSeriesAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(content.ContentGallery)
-class ContentGalleryAdmin(admin.ModelAdmin):
-    """ Content Gallery admin class definition"""
+@admin.register(content.TvSeriesGallery)
+class TvSeriesGalleryAdmin(admin.ModelAdmin):
+    """ TvSeriesGallery admin class Definition """
     pass
