@@ -1,0 +1,57 @@
+{% extends 'admin_base.html' %}
+{% block title %} Add Season {% endblock %}
+{% block content %}
+       <main class="main">
+	<div class="container-fluid">
+		<div class="row">
+			<!-- main title -->
+			<div class="col-12">
+				<div class="main__title">
+					<h2>Add new item</h2>
+				</div>
+			</div>
+			<!-- end main title -->
+
+			<!-- form -->
+			<div class="col-12">
+                {% include 'message.html' %}
+				<form action="#" class="form" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+						<div class="col-12 col-md-7 form__content">
+							<div class="row">
+
+								<div class="col-12">
+									{{ form.tv_series }}
+								</div>
+
+								<div class="col-12">
+                                    {{ form.season_title_or_number }}
+								</div>
+								<div class="col-12">
+                                    {{ form.season_description }}
+								</div>
+							</div>
+						</div>
+                        <!--Movie Category -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            {{ form.category }}
+                        </div>
+                        <!-- End movie category !-->
+						<div class="col-12">
+							<div class="row">
+								<div class="col-12">
+                                    {{ form.video_url }}
+								</div>
+								<div class="col-12">
+									<button type="submit" class="form__btn" id="button_publish">Add</button>
+								</div>
+							</div>
+						</div>
+				</form>
+			</div>
+			<!-- end form -->
+		</div>
+	</div>
+</main>
+{% endblock %}

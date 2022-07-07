@@ -69,6 +69,9 @@ $(document).ready(function () {
 	$('#category').select2({
 		placeholder: "Choose Category",
 	});
+	$('#tvseries').select2({
+		placeholder:"Choose Tv Series",
+	});
 
 	$('#country').select2({
 		placeholder: "Choose country / countries"

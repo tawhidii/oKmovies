@@ -6,7 +6,7 @@ from contents.models.country import Country
 from contents.models.genre import Genre
 from contents.models.content import Content, ContentGallery
 from contents.models.category import Category
-from admin_dashboard.forms.content_add_form import AddContentForm
+from admin_dashboard.forms.content_form import AddContentForm
 
 
 class AddContent(View):

@@ -2,7 +2,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from contents.models.content import TvSeries,TvSeriesGallery
-from admin_dashboard.forms.tv_series_add_form import AddTvSeriesForm
+from admin_dashboard.forms.tv_series_form import AddTvSeriesForm
 
 
 class TvSeriesAddView(SuccessMessageMixin, generic.CreateView):
